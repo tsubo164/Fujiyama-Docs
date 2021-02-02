@@ -1,0 +1,677 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Fujiyama Documentation</title>
+	<link rel="shortcut icon" href="../img/hinomaru.ico">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div align="center">
+<table width="691">
+	<tr>
+		<td>
+		<hr id="header_hr">
+		<h1 align="center"> <font class="emphasis">F</font>ujiyama <font class="emphasis">D</font>ocumentation </h1>
+		<hr id="header_hr">
+		</td>
+	</tr>
+
+		<!--
+	<tr>
+		<th>
+		<hr size="2" color="000000">
+		<a id="menue" href="../index.html">Back to Fujiyama Home</a>
+		<a id="menue" href="#">Document top</a> |
+		<a id="menue" href="#architecture">Architecture</a> |
+		<a id="menue" href="#compile">Compile</a> |
+		<a id="menue" href="#samples">Samples</a> |
+		<a id="menue" href="#reference">Reference</a>
+		<hr size="2" color="000000">
+		</th>
+	</tr>
+		-->
+
+	<tr>
+		<td><br><br></td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="../img/hinomaru.png"> <span="architecture">Table of Contents</span>
+			</h2>
+
+			<ul>
+				<li><a href="#architecture">The Architecture of Fujiyama</a>
+				<li><a href="#compile">How to compile</a>
+				<li><a href="#samples">How to render sample scenes</a>
+				<li><a href="#tools">Tools</a>
+				<li><a href="#basic">Basic of Scene Interfaces</a>
+				<li><a href="#reference">Scene Interfaces Reference Manual</a>
+			</ul>
+			<p>
+			<a href="../index.html">Back to Fujiyama Home</a>
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="../img/hinomaru.png"> <span id="architecture">The Architecture of Fujiyama </span>
+			</h2>
+
+			<p>
+				The architecture of Fujiyama is very simple.
+			</p>
+			<img border="0" src="../img/arch.png">
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="../img/hinomaru.png"> <span id="compile">How to compile</span>
+			</h2>
+
+			<p>
+			<ol>
+				<li>Download <a href="../index.html#download">source package</a>
+				<li>Make sure that all headers and libraries in proper paths
+				<li>Run commands the below in the shell
+<pre>
+$ tar xvzf fujiyama-xxx.tar.gz
+$ cd fujiyama-xxx/
+$ make
+</pre>
+				<li>Core library and shader DSOs are created in lib/ directory
+				<li>Tools are created in individual directories under tools/
+				<li>Run commands the below to check the unit testing
+<pre>
+$ make check | grep FAIL
+</pre>
+				<li>If you see any FAILs, the distribution is broken. Please contact me
+				<li>To install the core library, shaders, scene parser and tools, run this
+<pre>
+$ make prefix=<i>/path/to/install</i> install
+</pre>
+				<li>The core library and shaders are installed to <i>prefix</i>/lib
+				<li>The scene parser and tools are installed to <i>prefix</i>/bin
+			</ol>
+			</p>
+			<li><font class="emphasis">dlfcn.h</font> and <font class="emphasis">sys/stat.h</font> are required for loading DSOs (UNIX-like system)
+			<li><font class="emphasis">OpenGL/GLUT</font> are required for FrameBuffer Viewer
+			<li><font class="emphasis">OpenEXR</font> is required for fb2exr
+
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="../img/hinomaru.png"> <span id="samples">How to render sample scenes</span>
+			</h2>
+
+			<p>
+			<ol>
+				<li>Download <a href="../index.html#download">ply models</a> or make your own
+				<li>Download <a href="../index.html#download">hdr images</a> or make your own
+				<li>Make sure <font class="emphasis">LD_LIBRARY_PATH</font> points to the directory you installed library
+				<li>Make sure <font class="emphasis">PATH</font> points to the directory you installed tools
+				<li>Run commands the below to convert data
+<pre>
+$ ply2mesh teapot.ply teapot.mesh
+$ hdr2tex pisa.hdr pisa.tex
+</pre>
+				<li>Run scene file parser
+<pre>
+$ scene ./scenes/teapot.scn
+ or
+$ cat ./scenes/teapot.scn | scene
+</pre>
+				<li>Run FrameBuffer Viewer to view the *.fb or convert the output to *.exr
+<pre>
+$ fbview teapot.fb
+ or
+$ fb2exr teapot.fb teapot.exr
+</pre>
+			</ol>
+			</p>
+
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="../img/hinomaru.png"> <span id="tools">Tools</span>
+			</h2>
+
+			<p>
+			<ul>
+				<li>FrameBuffer Viewer
+				<ul>
+				<img border="0" src="../img/fb_rgb.png" vspace="5">
+				<img border="0" src="../img/fb_alpha.png" vspace="5">
+					<li>Displays <font class="emphasis">*.fb</font> and <font class="emphasis">*.mip</font>
+					<li>Assumes it runs on PC and does <font class="emphasis">gamma correction</font> when loading images
+					<li>*.fb is the output file of the renderer
+					<li>*.fb can store data that is only within valid data
+					<li>*.mip is the mipmap file for the image texture
+					<li>Run this command to see more information
+<pre>
+$ fbview --help
+</pre>
+				</ul>
+				<li>fb2exr
+				<ul>
+					<li>Converts <font class="emphasis">*.fb</font> to <font class="emphasis">*.exr</font>
+					<li>Run this command to see more information
+<pre>
+$ fb2exr --help
+</pre>
+				</ul>
+
+				<li>hdr2mip
+				<ul>
+				<img border="0" src="../img/mip_rgb.png" vspace="5">
+					<li>Converts <font class="emphasis">*.hdr</font> to <font class="emphasis">*.mip</font>
+					<li>Compute mipmap resolution (<font class="emphasis">power of 2</font>) automatically
+					<li>If the input image resolution is not power of 2, then <font class="emphasis">the output image will be stretched</font>
+					<li>Tile size is currently <font class="emphasis">64 by 64 pixels</font> only
+					<li>Run this command to see more information
+<pre>
+$ hdr2mip --help
+</pre>
+				</ul>
+
+				<li>ply2mesh
+				<ul>
+					<li>Converts <font class="emphasis">*.ply</font> to <font class="emphasis">*.mesh</font>
+					<li>All polygons are divided into <font class="emphasis">triangles</font>
+					<li><font class="emphasis">Normals are computed</font> if they don't exist
+					<li>Run this command to see more information
+<pre>
+$ ply2mesh --help
+</pre>
+				</ul>
+
+				<li>obj2mesh
+				<ul>
+					<li>Converts <font class="emphasis">*.obj</font> to <font class="emphasis">*.mesh</font>
+					<li>All polygons are divided into <font class="emphasis">triangles</font>
+					<li><font class="emphasis">Normals are computed</font> if they don't exist
+					<li>Run this command to see more information
+<pre>
+$ obj2mesh --help
+</pre>
+				</ul>
+			</ol>
+			</p>
+
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="../img/hinomaru.png"> <span id="basic">Basics of Scene Interfaces</span>
+			</h2>
+
+			<p>
+				Basic syntax is very simple and straight-forward.
+			<ul>
+				<li>Command-like language - One line does one operation
+				<li>Command name and arguments are <font class="emphasis">separated by spaces</font>
+				<li>A line starts with <font class="emphasis">"#" means comment</font>
+				<li>Most of commands have the <font class="emphasis">entry name in the first argument</font>
+				<li>Entry name is the thing that you want to create or operate
+<pre>
+<i>Command arg0 arg1 arg2...</i>
+</pre>
+			</ul>
+			</p>
+
+			<p>
+			For example, the line below creates a new mesh with name of "mesh1" in scene.
+<pre>
+<font class="command"><b>NewMesh mesh1 /path/to/bunny.mesh</b></font>
+</pre>
+			the next line below creates a new object instance with name of "obj1" referenced to "mesh1".
+<pre>
+<font class="command"><b>NewObjectInstance obj1 mesh1</b></font>
+</pre>
+			</p>
+			<p>
+			Scene Interface commands are corresponding to ones for C Binding. <font class="command"><b>SiOpenScene()</b></font> and <font class="command"><b>SiCloseScene()</b></font> are implicitly called by scene description file parser. So, there is no command corresponding to them.
+			</p>
+
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="../img/hinomaru.png"> <span id="basic">Python Binding</span>
+			</h2>
+
+			<p>
+			Fujiyama provides Python interfaces to write scene description file. <font class="emphasis">Python 2.5 or higher</font> version is supported. Note that <font class="emphasis">Python 3 is not supported.</font>
+			</p>
+			<p>
+				To run fujiyama scene written in python, fujiyama.py needs to be put in the path where python finds it. For example, you can run it like this,
+<pre>
+$ env PYTHONPATH=tools/PythonAPI scens/volume_and_bunny.py
+</pre>
+				Python Binding of scene interface is very straight forward. Before calling any scene interface, you need to import fujiyama module like this,
+<pre>
+import fujiyama
+si = fujiyama.SceneInterface()
+</pre>
+				The most of methods correspond to scene interface. Higher level of interfaces will be implemented in the future like this,
+<pre>
+si.OpenPluginDirectory('/path/to/python_modules')
+</pre>
+
+               To see help of Python interfaces, type this
+<pre>
+pydoc tools/PythonAPI/fujiyama.py
+</pre>
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="../img/hinomaru.png"> <span id="reference">Scene Interfaces Reference Manual</span>
+			</h2>
+
+			<br>
+			<h3 class="command">OpenPlugin <i>filepath</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">filepath</td> <td>full or relative path to the actual DSOs filepath</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">RenderScene <i>renderer</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">renderer</td> <td>renderer name to run</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">SaveFrameBuffer <i>framebuffer filepath</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">framebuffer</td> <td>framebuffer name to save</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">filepath</td> <td>file path to save to</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">RunProcedure <i>procedure</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">procedure</td> <td>procedure name to run</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">AddObjectToGroup <i>object_group object</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">object_group</td> <td>object group name to add to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">object</td> <td>object name to add</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewObjectInstance <i>name mesh</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>object name to create</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">mesh</td> <td>mesh name to instance</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewFrameBuffer <i>name type</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>framebuffer name to create</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">type</td> <td>type of framebuffer. only rgba for now</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewObjectGroup <i>name</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>object group name to create</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewTubulence <i>name</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>turbulence name to create</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewProcedure <i>name plugin</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>procedure name to create</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">plugin</td> <td>procedure plugin name to instance</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewRenderer <i>name</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>renderer name to create</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewTexture <i>name filepath</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>texture name to create</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">filepath</td> <td>file path to load</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewCamera <i>name type</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>camera name to create</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">type</td> <td>type of camera. only PerspectiveCamera for now</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewShader <i>name plugin</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>shader name to create</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">plugin</td> <td>shader plugin name to instance</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewVolume <i>name</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>volume name to create</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewCurve <i>name filepath</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>curve name to create</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">filepath</td> <td>file path to load</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewLight <i>name type</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>light name to create</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">type</td> <td>type of light. only PointLight for now</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">NewMesh <i>name filepath</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">name</td> <td>mesh name to create</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">filepath</td> <td>file path to load</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">AssignFrameBuffer <i>renderer framebuffer</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">renderer</td> <td>renderer name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">framebuffer</td> <td>framebuffer name to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">AssignObjectGroup <i>entry property object_group</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">entry</td> <td>entry name for the property</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">property</td> <td>property name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">object_group</td> <td>object group name to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">AssignTurbulence <i>entry property turbulence</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">entry</td> <td>entry name for the property</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">property</td> <td>property name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">object_group</td> <td>turbulence name to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">AssignTexture <i>shader property texture</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">shader</td> <td>shader name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">property</td> <td>property name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">texture</td> <td>texture name to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">AssignShader <i>object shader</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">object</td> <td>object name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">shader</td> <td>shader name to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">AssignCamera <i>renderer camera</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">renderer</td> <td>renderer name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">camera</td> <td>camera name to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">AssignVolume <i>entry property volume</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">entry</td> <td>entry name for the property</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">property</td> <td>property name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">volume</td> <td>volume name to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">SetProperty1 <i>entry property value0</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">entry</td> <td>entry name for the property</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">property</td> <td>property name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value0</td> <td>1st element of the value to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">SetProperty2 <i>entry property value0 value1</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">entry</td> <td>entry name for the property</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">property</td> <td>property name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value0</td> <td>1st element of the value to assign</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value1</td> <td>2nd element of the value to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">SetProperty3 <i>entry property value0 value1 value2</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">entry</td> <td>entry name for the property</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">property</td> <td>property name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value0</td> <td>1st element of the value to assign</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value1</td> <td>2nd element of the value to assign</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value2</td> <td>3rd element of the value to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">SetProperty4 <i>entry property value0 value1 value2 value3</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">entry</td> <td>entry name for the property</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">property</td> <td>property name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value0</td> <td>1st element of the value to assign</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value1</td> <td>2nd element of the value to assign</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value2</td> <td>3rd element of the value to assign</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value3</td> <td>4th element of the value to assign</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">SetSampleProperty3 <i>entry property value0 value1 value2 time</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">entry</td> <td>entry name for the property</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">property</td> <td>property name to assign to</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value0</td> <td>1st element of the value to assign</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value1</td> <td>2nd element of the value to assign</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">value2</td> <td>3rd element of the value to assign</td>
+			</tr>
+			<tr>
+			<td width="100" class="parm">time</td> <td>sample time where to assign property</td>
+			</tr>
+			</table>
+
+			<br>
+			<h3 class="command">ShowPropertyList <i>type</i></h3>
+			<table class="parmbox">
+			<tr>
+			<td width="100" class="parm">type</td> <td>type name (ObjectInstance, Volume, ...) or plugin name (PlasticShader, ...) to show property list of</td>
+			</tr>
+			</table>
+
+		</td>
+	</tr>
+
+	<tr>
+		<td align="center">
+			<hr id="footer_hr">
+			<font id="footer"> Copyright (c) 2011-2020 Hiroshi Tsubokawa </font>
+			<hr id="footer_hr">
+		</td>
+	</tr>
+</table>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Fujiyama Renderer</title>
+<meta name="keywords" content="Fujiyama Renderer, Distribution Oriented Renderer, Ray-tracing Renderer, Pure ANSI C, Digital Domain">
+<meta name="description" content="Fujiyama Renderer is comapct, portable and simple ray-tracing renderer">
+	<link rel="shortcut icon" href="img/hinomaru.ico">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div align="center">
+<table width="691">
+	<tr>
+		<td> <img border="0" src="img/fujiyama.png"> </td>
+	</tr>
+
+	<tr>
+		<th>
+		<hr id="header_hr">
+		<a id="menue" href="index.html">Home</a> |
+		<a id="menue" href="features.html">Features</a> |
+		<a id="menue" href="documentation.html">Documentation</a> |
+		<a id="menue" href="download.html">Download</a> |
+		<a id="menue" href="author.html">Author</a>
+		<hr id="header_hr">
+		</th>
+	</tr>
+
+	<tr>
+		<td><br><br></td>
+	</tr>
+
+			<td align="center">
+				<a class="imglink" href="img/xyzrgb_dragon.jpg" target="_blank">
+					<img border="0" src="img/xyzrgb_dragon_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/happy_buddhas.jpg" target="_blank">
+					<img border="0" src="img/happy_buddhas_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/teapot.jpg" target="_blank">
+					<img border="0" src="img/teapot_thumb.jpg">
+				</a>
+			</td>
+	</tr>
+
+	<tr>
+		<td>
+				<br>
+				<div class="box">
+				Fujiyama is <font class="emphasis">free and open source</font>, distribution oriented <font class="emphasis">ray-tracing renderer</font> designed to handle production image rendering.
+				</div>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="img/hinomaru.png"> Overview
+			</h2>
+
+
+			<li>Compatibility - written in <font class="emphasis">pure ANSI C</font> (*)
+			<li>Portability - depends on <font class="emphasis">no external library</font> (**)
+			<li>Simplicity - requires only single <font class="emphasis">C interfaces header file</font> and <font class="emphasis">library</font>
+			<li>Compact - the size of core library is about <font class="emphasis">100Kb</font>
+			<li>Open Source - licensed under the terms of <font class="emphasis">MIT License</font>
+
+			<p>
+				<font color="#999999">* fb2exr is written in C++</font><br>
+				<font color="#999999">** some external tools require OpenEXR and OpneGL/glut</font>
+			</p>
+			<!--
+			-->
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="img/hinomaru.png"> <a name="features">Features</a>
+			</h2>
+
+			<p>
+				Below are the implemented features so far.
+			</p>
+			<li>Original mesh format - <font class="emphasis">ply2mesh</font> is provided
+			<li>Original mipmap format - <font class="emphasis">hdr2mip</font> is provided
+			<li>Original framebuffer format - <font class="emphasis">fb2exr</font> is provided
+			<li><font class="emphasis">On demand reading of mipmap</font> - unlimited number of texture images
+			<li><font class="emphasis">Pluggable shader DSO</font> - shaders can be written in C/C++
+			<li><font class="emphasis">Object instance</font> - saves memory usage
+			<li><font class="emphasis">On demand construction of accelerator</font> - avoids unnecessary construction
+			<li><font class="emphasis">Grid accelerator</font> - for meshes (dense distribution)
+			<li><font class="emphasis">BVH accelerator</font> - for object instances (sparse distribution)
+			<li>Command-like scene description language - works with <font class="emphasis">text filter tools</font>
+			<li><font class="emphasis">Region rendering</font> - accelerates distribution rendering pipeline
+			<li>Gaussian and Box pixel filters - supports <font class="emphasis">filter width bigger than 1 pixel</font>
+			<li><font class="emphasis">FrameBuffer Viewer</font> - provided in the distribution
+			<li>Uniform grid pixel sampling
+			<li>Tile based rendering
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="img/hinomaru.png"> <a name="documentation">Documentation </a>
+			</h2>
+
+			<p>
+			See <a href="docs/index.html">Fujiyama Documentation</a>.
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="img/hinomaru.png"> <a name="download">Download</a>
+			</h2>
+
+			<table border="0" bgcolor="#000000" cellspacing="2" cellpadding="10">
+			<tr>
+			<td align="center" bgcolor="#FFFFFF">
+				the latest version is
+				<h2>
+				<font color="#FF0000">v0.0.1(Alpha)</font>
+				</h2>
+				01/01/2012
+			</td>
+			</tr>
+			</table><br>
+			<!--
+			-->
+
+			<!--
+			<p>
+			source package <a href="">fujiyama-alpha-0.0.1.tar.gz</a> (75Kb) (01/01/2012) 
+			</p>
+
+			<li>The source code can be downloaded from <a href="">github</a>
+			-->
+			<!--
+			<p>
+			coming soon<br>
+			source package fujiyama-alpha-0.0.1.tar.gz (75Kb) (01/01/2012)
+			</p>
+			-->
+
+			<li><font class="emphasis">No binary package</font> is provided on any platform
+			<li>See <font class="emphasis">README</font> in the distribution to build the source code
+
+			<li><font class="emphasis">PLY</font> format models are available <a href="http://graphics.stanford.edu/data/3Dscanrep/" target="_blank">here</a>
+			<li><font class="emphasis">HDR</font> format images are available <a href="http://gl.ict.usc.edu/Data/HighResProbes/" target="_blank">here</a>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="img/hinomaru.png"> <a name="author">Author</a>
+			</h2>
+
+			<p>
+			Hiroshi Tsubokawa<br>
+			Digital Domain<br>
+			FX Technical Director
+			</p>
+			<p>
+			email: hiroshi__AT__fujiyama-renderer.com
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td align="center">
+			<hr id="footer_hr">
+			<font id="footer"> Copyright (c) 2011-2012 Hiroshi Tsubokawa </font>
+			<hr id="footer_hr">
+		</td>
+	</tr>
+</table>
+</div>
+
+</body>
+</html>
+

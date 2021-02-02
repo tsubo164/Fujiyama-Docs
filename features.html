@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Fujiyama Renderer</title>
+<meta name="keywords" content="Fujiyama Renderer, Distribution Oriented Renderer, Ray-tracing Renderer, Pure ANSI C, Digital Domain">
+<meta name="description" content="Fujiyama Renderer is comapct, portable and simple ray-tracing renderer">
+	<link rel="shortcut icon" href="img/hinomaru.ico">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div align="center">
+<table width="691">
+	<tr>
+		<td> <img border="0" src="img/fujiyama.png"> </td>
+	</tr>
+
+	<tr>
+		<th>
+		<hr id="header_hr">
+		<a id="menue" href="index.html">Home</a> |
+		<a id="menue" href="features.html">Features</a> |
+		<a id="menue" href="documentation.html">Documentation</a> |
+		<a id="menue" href="downloads.html">Downloads</a> |
+		<a id="menue" href="author.html">Author</a>
+		<hr id="header_hr">
+		</th>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="img/hinomaru.png"> <a name="features">Features</a>
+			</h2>
+
+			Platforms
+				<ul>
+				<li>Linux
+				<li>Mac OS X
+				<li>Windows
+				</ul>
+
+			Rendering
+				<ul>
+				<li><font class="emphasis">Multi-threaded</font> rendering - dynamic assignement of tile rendering per theread
+				<li><font class="emphasis">Rendering preview</font> - fbview shows rendering progress
+				
+				<li><font class="emphasis">Region rendering</font> - accelerates distribution rendering pipeline
+				<li>Tile based rendering
+				</ul>
+
+			Supported Primitives
+				<ul>
+				<li>Triangle Mesh - <font class="emphasis">Compact representation</font>
+				<li>Bezier Curves - <font class="emphasis">Unlimited smoothness</font> subdividing in render time
+				<li>Volume Primitive - <font class="emphasis">Ray traced</font> self-shadowing
+				<li>Point Cloud - Can be rendered as <font class="emphasis">particles</font>
+				</ul>
+
+			Procedure Plugin
+				<ul>
+				<li>Volume Filling Procedure - <font class="emphasis">Pyroclastic clouds procedure</font> provided
+				<li>Volume Filling Procedure - <font class="emphasis">Spline wisps procedure</font> provided
+				<li>Volume Filling Procedure - <font class="emphasis">Surface wisps procedure</font> provided
+				</ul>
+
+			File format
+				<ul>
+				<li>Original mipmap format - <font class="emphasis">hdr2mip</font> is provided
+				<li>Original framebuffer format - <font class="emphasis">fb2exr</font> is provided
+				<li>Command-like scene description language - works with <font class="emphasis">text filter tools</font>
+				<li><font class="emphasis">Python Binding</font> scene description - can utilize <font class="emphasis">control structures and libraries</font>
+				<li><font class="emphasis">FrameBuffer Viewer</font> - displays *.fb and *.mip
+				<li><font class="emphasis">Input format</font> - *.mesh, *.ply, *.obj, *.mip, *.hdr, *.jpg (through Python API)
+				<li><font class="emphasis">Output format</font> - *.fb, *.exr (through Python API)
+				</ul>
+				</ul>
+
+			Lighting
+				<ul>
+				<li><font class="emphasis">Point light</font> - traditional point light
+				<li><font class="emphasis">Grid light</font> - typical area light with <font class="emphasis">single/double-sided option</font>
+				<li><font class="emphasis">Sphere light</font> - another area light
+				<li><font class="emphasis">Dome light</font> - supports <font class="emphasis">IBL with environment map</font>
+				</ul>
+
+			Animation
+				<ul>
+				<li><font class="emphasis">Camera motion blur</font> - sampling non-linear camera motion
+				<li><font class="emphasis">Transform motion blur</font> - sampling non-linear object motion
+				<li><font class="emphasis">Velocity attribute motion blur</font> - useful for point count changing geometry
+				</ul>
+
+			Shading and Texture
+				<ul>
+				<li><font class="emphasis">On demand reading of mipmap</font> - unlimited number of texture images
+				<li><font class="emphasis">Pluggable shader DSO</font> - shaders can be written in C/C++
+				<li><font class="emphasis">Subsurface scattering</font> - implemented in shader
+				<li><font class="emphasis">Bump mapping</font> - perturb normals based on mipmap images
+				<li><font class="emphasis">Primitive groups</font> - multiple shader assignment on triangle mesh
+				</ul>
+
+			Acceleratotion structure
+				<ul>
+				<li><font class="emphasis">Grid accelerator</font> - for meshes (dense distribution)
+				<li><font class="emphasis">BVH accelerator</font> - for object instances (sparse distribution)
+				<li><font class="emphasis">Object instance</font> - saves memory usage</li>
+				</ul>
+
+			Sampling and Filtering
+				<ul>
+				<li>Gaussian and Box pixel filters - supports <font class="emphasis">filter width bigger than 1 pixel</font>
+				<li>Adaptive grid pixel sampling - subdivides pixels based on color threshold
+				<li>Uniform grid pixel sampling
+				<li><font class="emphasis">Jittered pixel sampling</font>
+				</ul>
+
+			Extensibility
+				<ul>
+				<li><font class="emphasis">Rendering callbacks</font> - 5 points to hook rendering process
+				</ul>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="img/hinomaru.png"> Under development</a>
+			</h2>
+				<ul>
+				<li>Deformation motion blur
+				<li>AOV support
+				<li>Displacement shader
+				<li>Subdivision surface
+				<li>Global illumination
+				<li>Deep shadow map
+				<li>Alembic support
+				<li>OpenVDB support
+				</ul>
+			<p>
+			<br>
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td align="center">
+			<hr id="footer_hr">
+			<font id="footer"> Copyright (c) 2011-2020 Hiroshi Tsubokawa </font>
+			<hr id="footer_hr">
+		</td>
+	</tr>
+</table>
+</div>
+
+</body>
+</html>
+
