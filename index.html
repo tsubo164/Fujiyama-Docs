@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Fujiyama Renderer</title>
+<meta name="keywords" content="Fujiyama Renderer, Distribution Oriented Renderer, Ray-tracing Renderer, Pure ANSI C++, Digital Domain">
+<meta name="description" content="Fujiyama Renderer is comapct, portable and simple ray-tracing renderer">
+	<link rel="shortcut icon" href="img/hinomaru.ico">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div align="center">
+<table width="691">
+	<tr>
+		<td> <img border="0" src="img/fujiyama.png"> </td>
+	</tr>
+
+	<tr>
+		<th>
+		<hr id="header_hr">
+		<a id="menue" href="index.html">Home</a> |
+		<a id="menue" href="features.html">Features</a> |
+		<a id="menue" href="documentation.html">Documentation</a> |
+		<a id="menue" href="downloads.html">Downloads</a> |
+		<a id="menue" href="author.html">Author</a>
+		<hr id="header_hr">
+		</th>
+	</tr>
+
+<!--
+	<tr>
+		<td><br><br></td>
+	</tr>
+-->
+
+	<tr>
+		<td>
+				<br>
+			<table border="0" cellspacing="10">
+			<tr valign="top">
+			<td width="60%">
+				<h3>Fujiyama is ...</h3>
+				Fujiyama is <font class="emphasis">free and open source</font>,
+				distribution oriented <font class="emphasis">ray-tracing renderer</font>
+				designed to handle production image rendering.<br>
+				<a href="features.html">Read features ...</a>
+					<br>
+					<br>
+					<!--
+					<img border="0" src="img/icons/linux_35.png">
+					<img border="0" src="img/icons/macos_32.png">
+					<img border="0" src="img/icons/windows_33.png">
+					-->
+					<!--
+					<img border="0" src="img/icons/python_40.png">
+					<img border="0" src="img/icons/openmp_logo.gif">
+					-->
+				<!--
+					<img border="0" src="img/icons/linux_48.png">
+					<img border="0" src="img/icons/windows_48.png">
+					<img border="0" src="img/icons/apple_32.png">
+					<img border="0" src="img/icons/python_40.png">
+				-->
+			</td>
+			<td>
+				<table border="0" align="right" bgcolor="#000000" cellspacing="2" cellpadding="10">
+				<tr>
+				<td align="center" bgcolor="#FFFFFF">
+					the latest version is
+					<h2>
+					<a href="https://github.com/tsubo164/Fujiyama-Renderer/tags" target="_blank">v0.3.7(Alpha)</a>
+					</h2>
+					<p>
+					<a href="https://raw.github.com/tsubo164/Fujiyama-Renderer/master/release_notes/v0.3.7.txt" target="_blank">release notes</a> <small>(07/06/2020)</small>
+					</p>
+					<p>
+					<a href="https://github.com/tsubo164/Fujiyama-Renderer" target="_blank">Git Source Repository</a>
+					</p>
+					<!--
+					-->
+					<a class="imglink" href="downloads.html">
+					<img border="0" src="img/icons/linux_35.png">
+					</a>
+					<a class="imglink" href="downloads.html">
+					<img border="0" src="img/icons/macos_32.png">
+					</a>
+					<a class="imglink" href="downloads.html">
+					<img border="0" src="img/icons/windows_33.png">
+					</a>
+				</td>
+				</tr>
+				</table>
+			</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+
+	<tr>
+			<td align="center">
+				<a class="imglink" href="img/happy_buddhas.jpg" target="_blank">
+					<img border="0" src="img/happy_buddhas_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/pathtracing.png" target="_blank">
+					<img border="0" src="img/pathtracing_thumb.png">
+				</a>
+				<a class="imglink" href="img/furry_bunny.jpg" target="_blank">
+					<img border="0" src="img/furry_bunny_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/glassy_happy.jpg" target="_blank">
+					<img border="0" src="img/glassy_happy_thumb.jpg">
+				</a>
+				<br>
+				<a class="imglink" href="img/subsurface_scattering.png" target="_blank">
+					<img border="0" src="img/subsurface_scattering_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/pyro_ball.jpg" target="_blank">
+					<img border="0" src="img/pyro_ball_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/spline_wisps.jpg" target="_blank">
+					<img border="0" src="img/spline_wisps_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/surface_wisps.jpg" target="_blank">
+					<img border="0" src="img/surface_wisps_thumb.jpg">
+				</a>
+				<br>
+				<a class="imglink" href="img/dome_light1.jpg" target="_blank">
+					<img border="0" src="img/dome_light1_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/dome_light2.jpg" target="_blank">
+					<img border="0" src="img/dome_light2_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/camera_motion_blur.jpg" target="_blank">
+					<img border="0" src="img/camera_motion_blur_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/transform_motion_blur.jpg" target="_blank">
+					<img border="0" src="img/transform_motion_blur_thumb.jpg">
+				</a>
+				<br>
+				<a class="imglink" href="img/rungholt.png" target="_blank">
+					<img border="0" src="img/rungholt_thumb.png">
+				</a>
+				<a class="imglink" href="img/point_cloud.jpg" target="_blank">
+					<img border="0" src="img/point_cloud_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/bump_mapping.png" target="_blank">
+					<img border="0" src="img/bump_mapping_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/hair_velocity_blur.png" target="_blank">
+					<img border="0" src="img/hair_velocity_blur_thumb.png">
+				</a>
+				<br>
+				<a class="imglink" href="img/velocity_attribute_blur.png" target="_blank">
+					<img border="0" src="img/velocity_attribute_blur_thumb.png">
+				</a>
+				<a class="imglink" href="img/mesh_velocity_blur.png" target="_blank">
+					<img border="0" src="img/mesh_velocity_blur_thumb.png">
+				</a>
+				<a class="imglink" href="img/grid_light.jpg" target="_blank">
+					<img border="0" src="img/grid_light_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/sphere_light.jpg" target="_blank">
+					<img border="0" src="img/sphere_light_thumb.jpg">
+				</a>
+				<br>
+				<a class="imglink" href="img/xyzrgb_dragon.jpg" target="_blank">
+					<img border="0" src="img/xyzrgb_dragon_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/teapot.jpg" target="_blank">
+					<img border="0" src="img/teapot_thumb.jpg">
+				</a>
+				<a class="imglink" href="img/volume_and_bunny.jpg" target="_blank">
+					<img border="0" src="img/volume_and_bunny_thumb.jpg">
+				</a>
+				<!--
+				<a class="imglink" href="img/python_scene_description.png" target="_blank">
+					<img border="0" src="img/python-powered-h-100x130.png">
+				</a>
+				-->
+				<br>
+				<a class="imglink" href="img/screenshots/fbview_rendering.png" target="_blank">
+					<img border="0" src="img/screenshots/fbview_rendering_thumb.png">
+				</a>
+				<a class="imglink" href="img/screenshots/screenshot_linux.png" target="_blank">
+					<img border="0" src="img/screenshots/screenshot_linux_thumb.png">
+				</a>
+				<a class="imglink" href="img/screenshots/screenshot_macos.png" target="_blank">
+					<img border="0" src="img/screenshots/screenshot_macos_thumb.png">
+				</a>
+				<a class="imglink" href="img/screenshots/screenshot_windows.png" target="_blank">
+					<img border="0" src="img/screenshots/screenshot_windows_thumb.png">
+				</a>
+			</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="img/hinomaru.png"> Overview
+			</h2>
+
+
+			<ul>
+			<li>Compatibility - written in <font class="emphasis">C++11</font>
+			<li>Portability - depends on <font class="emphasis">no external library</font> (*)
+			<li>Simplicity - requires only single <font class="emphasis">C++ header file</font> and <font class="emphasis">library</font>
+			<li>Compact - the core library is <font class="emphasis">small and easy to embed</font>
+			<li>Open Source - licensed under the terms of <font class="emphasis">MIT License</font>
+			</ul>
+
+			<p>
+				<font color="#999999">* some external tools require OpenEXR and OpneGL/GLUT</font>
+			</p>
+			<!--
+			-->
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<h2>
+				<br> <img border="0" src="img/hinomaru.png"> Users
+			</h2>
+
+
+			<ul>
+			<li><a href="http://www.openmaya.net/openmaya/mayatofuji/mtfu-about.php" target="_blank">Maya Plugin</a> - Developed by Haggi Krey
+			<li><a href="http://vimeo.com/75143830" target="_blank">Demo Video</a>
+			<li><a href="http://rman.sakura.ne.jp/sb/sb.cgi?cid=10" target="_blank">Yuichirou Yokomakura's Blog</a>
+			</ul>
+
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<hr id="footer_hr">
+			<font id="footer"> Copyright (c) 2011-2020 Hiroshi Tsubokawa </font>
+			<hr id="footer_hr">
+		</td>
+	</tr>
+</table>
+</div>
+
+</body>
+</html>
+
+<br>
+<br>
+<br>
